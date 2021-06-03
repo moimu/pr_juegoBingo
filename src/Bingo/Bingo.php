@@ -25,7 +25,7 @@ class Bingo implements BingoableInterface{
         }
     }
     public function getBola(){
-
+        aaa
     }
     public function setCarton(){
 
