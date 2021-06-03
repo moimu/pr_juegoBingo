@@ -34,7 +34,7 @@ class Bingo implements BingoableInterface{
 
     }
     public function getJugadores(){
-
+        heloo;
     }
 
 }
