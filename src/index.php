@@ -4,4 +4,5 @@ include('Bingo/Bingo.php');
 
 $nuevaPartida = new Bingo('manu', 'samuel', 'albert', 'moi');
 
-$nuevaPartida -> getCarton();
+$nuevaPartida -> getBola();
+$nuevaPartida -> getBola();
