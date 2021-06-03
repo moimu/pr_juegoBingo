@@ -45,6 +45,7 @@ class Bingo implements BingoableInterface{
         foreach ($this->totalcartones as $key => $value) {
         
             foreach ($this->totalcartones[$key] as $key => $value) {
+                 
                 echo "$value</br>";
             }
         }
