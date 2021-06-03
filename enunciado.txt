@@ -1,0 +1,33 @@
+AM00009-Bingo Colaborativo
+Vence el 11 de junio de 2021 12:00Se cierra el 11 de junio de 2021 12:00
+Instrucciones
+
+Introducción: 
+
+Se desea desarrollar una aplicación web que simule un bingo para 4 jugadores. 
+
+Para cada jugador (simulado) podremos escoger el número de cartones que con que juega, hasta un máximo de 3 por jugador (Podremos escoger que sea aleatorio)
+
+Para cada jugador podremos escoger los cartones de cada jugador (o se escogidos aleatorios). Los cartones de juego están definidos en http://www.cartones-bingo.es/wp-content/uploads/2017/02/cartones-bingo-90-bolas.pdf . Lo cartones son únicos por partida.
+
+Una vez establecidos los cartones de la partida. El simulador comenzará a sacar las bolas, el programa deberá de ir mostrando cómo va cada jugador en cada momento y quien canta línea y bingo.
+
+
+Requisitos: 
+
+La aplicación deberá: 
+estar en la nube con su dominio
+tener un aspecto visual agradable
+ser desarrollada de forma colaborativa
+tener test unitarios
+Equipos: 
+Equipo 1
+Manu Moisés Ocete Samuel
+Equipo 2
+Andrés Ballesteros Ismael Rafa
+
+¿Qué tienes que entregar?
+En el repositorio git:
+En una tarea todo lo desarrollado (fuentes, pruebas, documentación,...)
+En la exposición: 
+explicación de qué problemas se han encontrado y la soluciones aportadas
