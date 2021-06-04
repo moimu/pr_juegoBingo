@@ -11,11 +11,18 @@
 
 <?php
     include('Bingo/Bingo.php');
+    
+    $linea1= array(33,62,70);
+    $linea2= array("_",16,"_");
+    $linea3= array(7,"_",21,22,22,22);
+
     $nuevaPartida = new Bingo('manu', 'samuel', 'albert', 'moi');
-    $nuevaPartida -> getCarton();
+    /*$nuevaPartida -> getCarton();
     $nuevaPartida -> getCarton();
 
-    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();*/
+    $nuevaPartida -> getLineaBingo($linea1,$linea2,$linea3);
+
 ?>
 
 </body>

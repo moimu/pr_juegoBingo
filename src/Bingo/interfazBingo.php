@@ -10,7 +10,6 @@ Interface BingoableInterface{
     
     public function getCarton();
     public function getBola();
-    public function setCarton();
     public function getLineaBingo();
     public function getJugadores();
     
