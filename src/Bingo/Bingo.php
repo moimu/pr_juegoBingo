@@ -75,9 +75,32 @@ class Bingo implements BingoableInterface{
         self::verifica($bola);
         /*var_dump($this -> rand);
         echo "</br>";*/
-        //echo"<div><button id='1'>Nuevo numero</button> </div>";
+        
+        echo"<div><button id='1'>Nuevo numero</button> </div>";
+        
+
+        
     }
-    public function getLineaBingo(){
+    public function getLineaBingo(array $linea1,array $linea2, array $linea3){
+        $linea1;
+        $linea2;
+        $linea3;
+
+        $li1= count($linea1);
+        $li2= count($linea2);
+        $li3= count($linea3);
+        echo $li1."</br>";
+        echo $li2."</br>";
+        echo $li3."</br>";
+        
+        if ($li1 && $li2 && $li3 <= 4) {
+            echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡ </br>";
+        }
+        elseif ($li1 || $li2 || $li3 <= 4 ) {
+            echo "!!!Linea¡¡¡ </br>";
+            
+
+        }
 
     }
     public function getJugadores(){
