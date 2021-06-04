@@ -15,7 +15,7 @@
     $nuevaPartida -> getCarton();
     $nuevaPartida -> getCarton();
 
-    $nuevaPartida -> verifica();
+    $nuevaPartida -> getBola();
 ?>
 
 </body>

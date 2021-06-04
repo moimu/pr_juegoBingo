@@ -16,6 +16,7 @@ class Bingo implements BingoableInterface{
         $this-> nombre3 = $nombre3;
         $this-> nombre4 = $nombre4;
         $this-> rand = range (1, 90);
+        $this -> fichero = fopen('cartones.dat','rb');
         
         
     }
@@ -42,13 +43,15 @@ class Bingo implements BingoableInterface{
         echo "</tr></table>";
     }
 
-    public function verifica(){
+    public function verifica($bola){
         $numeroGetBola = 22;
         foreach ($this->totalcartones as $key => $value) {
         
             foreach ($this->totalcartones[$key] as $key => $value) {
-                 
-                echo "$value</br>";
+                
+                if($value == $bola){
+                    echo " este carton contiene este nuemro";
+                }
             }
         }
     }
@@ -64,6 +67,7 @@ class Bingo implements BingoableInterface{
         }
         unset($this -> rand [$a]);
         echo $bola."</br>";
+        self::verifica($bola);
         /*var_dump($this -> rand);
         echo "</br>";*/
         
