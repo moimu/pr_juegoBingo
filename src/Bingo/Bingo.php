@@ -4,11 +4,12 @@ include('interfazBingo.php');
 
 class Bingo implements BingoableInterface{
     private int $numJugadores;
-    private string $nombre1;
-    private string $nombre2;
-    private string $nombre3;
-    private string $nombre4;
+    public string $nombre1;
+    public string $nombre2;
+    public string $nombre3;
+    public string $nombre4;
     private array $totalcartones;
+    private array $verificartotalcartones;
 
     public function __construct(string $nombre1, string $nombre2, string $nombre3, string $nombre4){
         $this-> nombre1 = $nombre1;
@@ -17,40 +18,44 @@ class Bingo implements BingoableInterface{
         $this-> nombre4 = $nombre4;
         $this-> rand = range (1, 90);
         $this -> fichero = fopen('cartones.dat','rb');
-        
-        
     }
-    public function getCarton(){
-        $linea = fgets($this-> fichero);
-        $carton = [];
-        $carton = explode( ".", $linea );
-        $this-> totalcartones[] = $carton;
-        echo "<table border=1px> <tr>";
-        $cont = 0;
-        var_dump($carton);
-        foreach( $carton as $clave => $valor ){
-            if($valor == "_"){
-                echo "<td>"." "."</td>";
+
+    public function getCarton($cartonesporjugador){
+
+        $cartonesporjugador = $cartonesporjugador*4;
+        while( $cartonesporjugador != 0){
+            $carton = [];
+            for($i=0; $i<3; $i++){
+                $linea = fgets($this-> fichero);
+                $carton []= explode( ".", $linea );
             }
-            else{
-                echo "<td>".$valor."</td>";
+            $this-> totalcartones[] = $carton;
+            echo "<table border=1px>";
+            // var_dump($carton);
+            foreach ($carton as $key => $value ) {                    
+                echo "<tr>";
+                foreach  ($carton[$key] as $clave => $valor) {
+                    echo "<td>".$valor."</td>";
+                }
+                echo "</tr>";
             }
-            if($cont==8 || $cont==17){
-                echo "</tr><tr>";
-            }
-            $cont++;
+            echo "</table>";
+            $cartonesporjugador--;
         }
-        echo "</tr></table>";
+        var_dump($this-> totalcartones);
+        $this-> verificartotalcartones = [];
+        $this-> verificartotalcartones = $this-> totalcartones;
     }
 
     public function verifica($bola){
-        $numeroGetBola = 22;
         foreach ($this->totalcartones as $key => $value) {
-        
-            foreach ($this->totalcartones[$key] as $key => $value) {
-                
-                if($value == $bola){
-                    echo " este carton contiene este nuemro";
+            foreach ($this->totalcartones[$key] as $clave => $valor) {
+                foreach ($this->totalcartones[$key][$clave] as $indi => $caracter) {
+                    if($caracter == $bola){
+                        // echo "En array id: $this->totalcartones[27] match con valor: $valor clave: $clave<br>";
+                        // $this->totalcartones[$key] = $valor." ";
+                        echo "match en carton ";
+                    }
                 }
             }
         }
@@ -70,14 +75,7 @@ class Bingo implements BingoableInterface{
         self::verifica($bola);
         /*var_dump($this -> rand);
         echo "</br>";*/
-        
         //echo"<div><button id='1'>Nuevo numero</button> </div>";
-        
-
-        
-    }
-    public function setCarton(){
-
     }
     public function getLineaBingo(){
 

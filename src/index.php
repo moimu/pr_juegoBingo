@@ -12,10 +12,81 @@
 <?php
     include('Bingo/Bingo.php');
     $nuevaPartida = new Bingo('manu', 'samuel', 'albert', 'moi');
-    $nuevaPartida -> getCarton();
-    $nuevaPartida -> getCarton();
-
+    $nuevaPartida -> getCarton(1);
+    
     $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+    $nuevaPartida -> getBola();
+
 ?>
 
 </body>

@@ -8,13 +8,9 @@
  */
 Interface BingoableInterface{
     
-    public function getCarton();
+    public function getCarton($cartonesporjugador);
     public function getBola();
-    public function setCarton();
     public function getLineaBingo();
     public function getJugadores();
     
 }
-
-// Max 3 cartones individual
-// y Max 12 cartones grupal , 4 jugadores = 12 cartones total
