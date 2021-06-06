@@ -8,9 +8,8 @@
  */
 Interface BingoableInterface{
     
-    public function getCarton($cartonesporjugador);
+    public function getCarton($ncartonesporjugador);
     public function getBola();
-    public function getLineaBingo(array $linea1,array $linea2, array $linea3);
-    public function getJugadores();
+    public function getLinea(array $linea);
     
 }
