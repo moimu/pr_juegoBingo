@@ -75,19 +75,17 @@ class Bingo implements BingoableInterface{
                     // echo "$clave ..... $indi....$caracter...<br>";
                     if($caracter == $bola){
                         // echo "En array id: $this->totalcartones[27] match con valor: $valor clave: $clave<br>";
-                        // $this->totalcartones[$key] = $valor." ";
                         echo "match en carton $key $clave $indi $caracter<br>";
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
                         // var_dump($this-> verificartotalcartones);
                     }
-                    $this->getLinea($this->verificartotalcartones[$key][$clave]);
+                   
                     //  var_dump($this->verificartotalcartones[$key][$clave]);
                     //   echo"<br><br><br><br>";
                 }
-                
+                $this->getPremio($this->verificartotalcartones[$key][$clave]);
             }
         }
-
     }
     
     public function getBola(){
@@ -102,15 +100,14 @@ class Bingo implements BingoableInterface{
 
     }
 
-    public function getLinea(array $linea){
+    public function getPremio(array $linea){
         if( $this->linealeida == 3 ){
             $this->linealeida = 0;
             $this->lineaCompleta = 0;
         }
         $this->linealeida++;
-
         $size= count($linea);
-        if ($size <= 4 ) {
+        if ($size == 4 ) {
             if($this->lineaCantada == 0){
                 echo " !!!  Linea  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this->lineaCantada = 1;
@@ -119,26 +116,8 @@ class Bingo implements BingoableInterface{
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
                 echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this-> bingoCantado = 1;
-                var_dump($this->verificartotalcartones);
             }
-        }
-            
+        }   
     }
-
-    // public function getBingo(array $fila1, array $fila2, array $fila3){
-       
-    //     if($this->bingoCantado == 0){
-    //         $size1= count($fila1);
-    //         $size2= count($fila2);
-    //         $size3= count($fila3);
-    //         if ($size1 && $size2 && $size3 <= 4) {
-    //             var_dump($fila1,$fila2,$fila3);
-    //             echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
-    //             $this-> bingoCantado = 1;
-    //         }
-          
-    //     }
-
-    // }
 
 }
