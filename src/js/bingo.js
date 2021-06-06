@@ -1,5 +1,5 @@
 let body = document.querySelectorAll("body");
-// const body = document.getElementById(".11");
+// const body = document.getElementById("9999");
 
 
 const botonbola = document.getElementById("1");

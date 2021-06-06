@@ -23,38 +23,57 @@ class Bingo implements BingoableInterface{
         $this-> nombre3 = $nombre3;
         $this-> nombre4 = $nombre4;
         $this-> lineaCompleta = 0;
-        $this->lineaCantada = 0;
+        $this-> lineaCantada = 0;
         $this-> bingoCantado = 0;
-        $this->linealeida = 0;
+        $this-> linealeida = 0;
         $this-> rand = range (1, 90);
         $this -> fichero = fopen('cartones.dat','rb');
     }
-
+    /**
+     * Generará tantos cartones para cada jugador como pasemos por parámetro max 3
+     * cada cartón tendrá id cada celda tendrá id siendo = " id_carton / id_celda [1-27] "
+     */
     public function getCarton($ncartonesporjugador){
 
         $ncartonesporjugador = $ncartonesporjugador*4;
+        $contIdCarton = 1;
+        
         while( $ncartonesporjugador != 0){
             $carton = [];
             for($i=0; $i<3; $i++){
                 $linea = fgets($this-> fichero);
                 $carton []= explode( ".", $linea );
             }
+            // cada carton generado irá dentro de totalcartones[]
             $this-> totalcartones[] = $carton;
-            echo "<table border=1px>";
+            
+            echo "<table id=$contIdCarton border=1px>";
             // var_dump($carton);
+            
+            $idceldas=[];
+            $contIdCelda = 1;
             foreach ($carton as $key => $value ) {                    
                 echo "<tr>";
                 foreach  ($carton[$key] as $clave => $valor) {
-                    echo "<td>".$valor."</td>";
+                    echo "<td id=$contIdCarton$contIdCelda>".$valor."</td>";
+                    $idceldas[] = "$contIdCarton$contIdCelda";
+                    $contIdCelda++;
                 }
                 echo "</tr>";
             }
             echo "</table>";
+            // clave 1 = id primer carton, dentro de esta clave existe array que
+            // para cada valor contiene id de celdas correspondientes al cartón.
+            $this-> totalIds[$contIdCarton] = $idceldas;
             $ncartonesporjugador--;
+            $contIdCarton++;
         }
         // var_dump($this-> totalcartones);
         $this-> verificartotalcartones = [];
+        // copiamos totalcartones en verificartotalcartones
+        // para poder editarlo y verificar premios
         $this-> verificartotalcartones = $this-> totalcartones;
+        var_dump( $this-> totalIds);
     }
 
     public function verifica($bola){
