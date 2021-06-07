@@ -29,7 +29,16 @@
    
 
     echo " <script src=js/bingo.js language=javascript type=text/javascript></script>";
-
+    if(file_exists('totalcartones.txt')){
+        $fich = fopen('totalcartones.txt','rb');
+        $string = "";
+        while($linea = fgets($fich)){
+            $string .= $linea;
+        }
+        $totalcartonesregenerado = unserialize( $string );
+        var_dump($totalcartonesregenerado);
+    }
+    
 ?>
 
 </body>

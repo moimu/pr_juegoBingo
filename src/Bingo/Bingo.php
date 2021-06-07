@@ -64,7 +64,7 @@ class Bingo implements BingoableInterface{
             echo "</table>";
             // clave 1 = id primer carton, dentro de esta clave existe array que
             // para cada valor contiene id de celdas correspondientes al cartón.
-            $this-> totalIds[$contIdCarton] = $idceldas;
+            $this-> totalIds[] = $idceldas;
             $ncartonesporjugador--;
             $contIdCarton++;
         }
@@ -73,14 +73,14 @@ class Bingo implements BingoableInterface{
         // copiamos totalcartones en verificartotalcartones
         // para poder editarlo y verificar premios
         $this-> verificartotalcartones = $this-> totalcartones;
-        var_dump( $this-> totalIds);
+        // var_dump( $this-> totalIds);
     }
 
     public function verifica($bola){
 
-        foreach ($this->totalcartones as $key => $value) {
-            
-            foreach ($this->totalcartones[$key] as $clave => $valor) {
+        foreach ($this->verificartotalcartones as $key => $value) {
+            $disp = $celda = 0;
+            foreach ($this->verificartotalcartones[$key] as $clave => $valor) {
                 // echo"<br><br><br><br>";
                 // var_dump($this->totalcartones[$key]);
                 // echo"<br><br><br><br>";
@@ -88,21 +88,31 @@ class Bingo implements BingoableInterface{
                 // cada uno de estos contendrá un array con todos los numeros de una linea,
                 // el carton lo conformarán estas 3 líneas.
                 
-                foreach ($this->totalcartones[$key][$clave] as $indi => $caracter) {
+                foreach ($this->verificartotalcartones[$key][$clave] as $indi => $caracter) {
                     // var_dump($this->totalcartones[$key][$clave]);
                     // echo"<br><br><br><br>";
                     // echo "$clave ..... $indi....$caracter...<br>";
+                    if($disp == 0){
+                        $celda++;
+                    }
                     if($caracter == $bola){
                         // echo "En array id: $this->totalcartones[27] match con valor: $valor clave: $clave<br>";
-                        echo "match en carton $key $clave $indi $caracter<br>";
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
                         // var_dump($this-> verificartotalcartones);
+                        $disp = 1;
+                        echo "match en carton $key $clave $indi $caracter<br>";
+                        echo "numero carton :  ".$key."<br>";
+                        echo "numero de saltos:  ".$celda."<br>";
+                        $this->totalcartones[$key][$clave][$indi] = "X";
+                        $string = serialize($this-> totalcartones);
+                        file_put_contents('totalcartones.txt',  $string );
+                        
                     }
-                   
                     //  var_dump($this->verificartotalcartones[$key][$clave]);
                     //   echo"<br><br><br><br>";
                 }
                 $this->getPremio($this->verificartotalcartones[$key][$clave]);
+                // var_dump($this->verificartotalcartones[$key]);
             }
         }
     }
@@ -130,11 +140,13 @@ class Bingo implements BingoableInterface{
             if($this->lineaCantada == 0){
                 echo " !!!  Linea  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this->lineaCantada = 1;
+                // var_dump($this->totalcartones);
             }
             $this->lineaCompleta =  $this->lineaCompleta +1;
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
                 echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this-> bingoCantado = 1;
+                // var_dump($this->totalcartones);
             }
         }   
     }
