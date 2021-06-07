@@ -14,7 +14,7 @@
     
     $linea1= array(33,62,70);
     $linea2= array("_",16,"_");
-    $linea3= array(7,"_",21,22,22,22);
+    $linea3= array(7,"_",21,22);
 
     $nuevaPartida = new Bingo('manu', 'samuel', 'albert', 'moi');
     /*$nuevaPartida -> getCarton();
