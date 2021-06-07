@@ -5,7 +5,7 @@
  */
 Interface BingoableInterface{
     
-    public function getCarton($ncartonesporjugador);
+    public function getCartones($ncartonesporjugador);
     public function getBola();
     public function verifica($bola);
     public function getPremio(array $linea);

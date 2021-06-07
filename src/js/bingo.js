@@ -1,13 +1,19 @@
-let body = document.querySelectorAll("body");
-// const body = document.getElementById("9999");
+// let body = document.querySelectorAll("body");
+// // const body = document.getElementById("9999");
 
 
-const botonbola = document.getElementById("1");
+// const botonbola = document.getElementById("1");
 
 
-botonbola.addEventListener( 'click' , function ( ){
+// botonbola.addEventListener( 'click' , function ( ){
    
-    // body.document.write('<?php $nuevaPartida -> getBola(); ?>');
-    // body.innerHTML = '<?php $nuevaPartida -> getBola(); ?>';
-    document.writeln = '<?php $nuevaPartida -> getBola(); ?>';
-} );
+//     // body.document.write('<?php $nuevaPartida -> getBola(); ?>');
+//     // body.innerHTML = '<?php $nuevaPartida -> getBola(); ?>';
+//     document.writeln = '<?php $nuevaPartida -> getBola(); ?>';
+// } );
+
+
+function myFunction() {
+    var x = document.activeElement.tagName;
+    document.getElementById("demo").innerHTML = x;
+  }
