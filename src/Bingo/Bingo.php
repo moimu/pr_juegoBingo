@@ -43,13 +43,12 @@ class Bingo implements BingoableInterface{
                 for($i=0; $i<3; $i++){
                     $linea = fgets($this-> fichero);
                     $carton []= explode( ".", $linea );                
-            }
+                }
                 
                 // cada carton generado irá dentro de totalcartones[]
                 $this-> totalcartones[] = $carton;
                 echo "<table class = c"."$contIdCarton id=$contIdCarton border=1px>";
                 // var_dump($carton);
-                
                 $idceldas=[];
                 $contIdCelda = 1;
                 foreach ($carton as $key => $value ) {                    
@@ -78,38 +77,51 @@ class Bingo implements BingoableInterface{
             $this-> verificartotalcartones = $this-> totalcartones;
             // var_dump( $this-> totalIds);
             }
+            echo "</table>";
+            // clave 1 = id primer carton, dentro de esta clave existe array que
+            // para cada valor contiene id de celdas correspondientes al cartón.
+            $this-> totalIds[] = $idceldas;
+            $ncartonesporjugador--;
+            $contIdCarton++;
         }
     
+
     public function verifica($bola){
-        
-        foreach ($this->totalcartones as $key => $value) {
-            foreach ($this->totalcartones[$key] as $clave => $valor) {
+        foreach ($this->verificartotalcartones as $key => $value) {
+            $disp = $celda = 0;
+            foreach ($this->verificartotalcartones[$key] as $clave => $valor) {
                 // echo"<br><br><br><br>";
                 // var_dump($this->totalcartones[$key]);
                 // echo"<br><br><br><br>";
                 // Para $key = n su valor será un array con 3 indices 0 1 2, 
                 // cada uno de estos contendrá un array con todos los numeros de una linea,
-                // el carton lo conformarán estas 3 líneas.
-                
-                foreach ($this->totalcartones[$key][$clave] as $indi => $caracter) {
+                // el carton lo conformarán estas 3 líneas.                
+                foreach ($this->verificartotalcartones[$key][$clave] as $indi => $caracter) {
                     // var_dump($this->totalcartones[$key][$clave]);
                     // echo"<br><br><br><br>";
                     // echo "$clave ..... $indi....$caracter...<br>";
-                    if($caracter == $bola){
-                        // echo "En array id: $this->totalcartones[27] match con valor: $valor clave: $clave<br>";
-                        echo "match en carton: $key , Linea: $clave , posicion: $indi , numero: $caracter<br>";
-                        echo "<hr>";
-                        unset($this->verificartotalcartones[$key][$clave][$indi]);
-                        // var_dump($this-> verificartotalcartones);
+                    if($disp == 0){
+                        $celda++;
                     }
-                   
-                    //  var_dump($this->verificartotalcartones[$key][$clave]);
-                    //   echo"<br><br><br><br>";
+                        if($caracter == $bola){
+                            // echo "En array id: $this->totalcartones[27] match con valor: $valor clave: $clave<br>";
+                            unset($this->verificartotalcartones[$key][$clave][$indi]);
+                            // var_dump($this-> verificartotalcartones);
+                            echo "match en carton: $key , Linea: $clave , posicion: $indi , numero: $caracter<br>";
+                            echo "<hr>";
+                            $disp = 1;
+                            $this->totalcartones[$key][$clave][$indi] = "X";
+                            $string = serialize($this-> totalcartones);
+                            file_put_contents('totalcartones.txt',  $string );
+                            
+                        }
+                        //  var_dump($this->verificartotalcartones[$key][$clave]);
+                        //   echo"<br><br><br><br>";
                 }
-                $this->getPremio($this->verificartotalcartones[$key][$clave]);
+            $this->getPremio($this->verificartotalcartones[$key][$clave]);
             }
         }
-    }
+    } 
     
     public function getBola(){
             // $bola será el VALOR contenido en array NO el indice
