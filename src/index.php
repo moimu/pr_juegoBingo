@@ -7,95 +7,28 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="9999">
 
 <?php
     include('Bingo/Bingo.php');
-    
-    $linea1= array(33,62,70);
-    $linea2= array("_",16,"_");
-    $linea3= array(7,"_",21,22,22,22);
 
     $nuevaPartida = new Bingo('manu', 'samuel', 'albert', 'moi');
-    $nuevaPartida -> getCarton(1);
+    $nuevaPartida -> getCarton(4);
     
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    $nuevaPartida -> getBola();
-    /*$nuevaPartida -> getCarton();
-    $nuevaPartida -> getCarton();
+    // echo "<div> <button classid='1'> Nuevo numero </button> </div>";
 
-    $nuevaPartida -> getBola();*/
-    $nuevaPartida -> getLineaBingo($linea1,$linea2,$linea3);
+    // cancela el límite de tiempo de ejecución de php
+    set_time_limit(0);
+    // for($i=0; $i<90; $i++){
+        // Genera nueva bola y verifica linea cada 2 segundos
+        $nuevaPartida -> getJuego();
+        // flush();
+        // ob_flush();
+        // sleep(2);
+    // }
+   
+
+    echo " <script src=js/bingo.js language=javascript type=text/javascript></script>";
 
 ?>
 
