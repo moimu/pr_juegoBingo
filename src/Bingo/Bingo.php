@@ -24,24 +24,21 @@ class Bingo implements BingoableInterface{
         $this -> fichero = fopen('cartones.dat','rb');
     }
     /**
-     * Si existen cartones generados, es decir existe fichero totalcartones.txt
-     * estamos en una partida no hacemos getCartones, regeneramos el fichero para
-     * obtener el array totalcartones ya matcheado con las bolas que han salido
-     * e imprimir los cartones con colores en las celdas matcheadas... 
-     *   -________ PRUEBA __--______
+     * Inicia el juego sacando bolas, verificando que existen en cartones,
+     * y dando linea y bingo. finaliza al salir bingo
      */
-    public function printtotalcartones(){
-
-        $fichero = fopen('totalcartones.txt','rb');
-        $string = "";
-        while($linea = fgets($fichero)){
-            $string .= $linea;
+    public function initJuego(){
+        // cancela el límite de tiempo de ejecución de php
+        set_time_limit(0);
+        echo "<div>";
+        while($this->bingoCantado !=1){
+            $bola = $this -> getBola();
+            $this -> verifica($bola);
+            flush();
+            ob_flush();
+            sleep(2);
         }
-        $totalcartonesregenerado = unserialize( $string );
-        // colvemos a asignar valor a verificartotalcartones
-        $this-> verificartotalcartones = $totalcartonesregenerado;
-        // var_dump($totalcartonesregenerado);
-        
+        echo "</div>";
     }
     /**
      * Generará tantos cartones para cada jugador como pasemos por parámetro max 3
@@ -101,6 +98,24 @@ class Bingo implements BingoableInterface{
          
     }
     /**
+     * Saca bola siendo esta un numero al azar contenido en el array rand
+     * y borra este numero para so ser repetido
+     */
+    public function getBola(){
+        // $bola será el VALOR contenido en array NO el indice
+        if($this->bingoCantado == 0){
+            
+            $claveazar = array_rand($this-> rand);
+            $bola = $this-> rand[$claveazar];
+            unset($this -> rand [$claveazar]);
+            echo "num bola: $bola</br>";
+            // var_dump($this-> rand);
+            return $bola;
+        }
+        
+    }
+
+    /**
      * Para $key = n su valor será un array con 3 indices 0 1 2, 
      * cada uno de estos contendrá un array con todos los numeros de una linea,
      * el carton lo conformarán estas 3 líneas.
@@ -116,39 +131,47 @@ class Bingo implements BingoableInterface{
                         $celda++;
                     }
                     if($caracter == $bola){
-                        echo "match en carton: $key , Linea: $clave , clave: $indi , idcelda: $celda<br> <hr>";
+                        // echo "match en carton: $key , Linea: $clave , clave: $indi , idcelda: $celda<br> <hr>";
+                        echo " ¡Match! ";
                         $idcartonmatch = $key;
                         $idceldamatch = $celda;
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
                         $this->totalcartones[$key][$clave][$indi] = "X";
-                        //  ---------    PRUEBA  ---------
-                        // $string1 = serialize($this-> totalcartones);
-                        // file_put_contents('totalcartones.txt',  $string1 );
-                        // $string2 = serialize($this-> verificartotalcartones);
-                        // file_put_contents('verificartotalcartones.txt',  $string2 );
+                        // -------  IMPRIMO CARTONES MATCHEADOS  -------
+                        foreach($this->totalcartones as $key => $value){
+                            echo "<table border=1px>";
+                            foreach ($this->totalcartones[$key] as $clave => $valor ) {                    
+                                echo "<tr>";
+                                foreach  ($this->totalcartones[$key][$clave] as $in => $numero) {
+                                    if($numero == "X"){
+                                        echo "<td class=celdacolor>".$numero."</td>";
+                                    }
+                                    else{
+                                        echo "<td>".$numero."</td>";
+                                    }
+                                }
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                            echo "</fieldset>";
+                        }
+                        
                         $disp = 1;
                     }
-                    //  var_dump($this->verificartotalcartones[$key][$clave]);  echo"<br><br><br><br>";
                 }
             $this->getPremio($this->verificartotalcartones[$key][$clave]);
             }
         }
-        if(isset($idcartonmatch)){
-            return "$idcartonmatch"."$idceldamatch";
-        }
+        // if(isset($idcartonmatch)){
+        //     return "$idcartonmatch"."$idceldamatch";
+        // }
         
     } 
     
-    public function getBola(){
-        // $bola será el VALOR contenido en array NO el indice
-        $claveazar = array_rand($this-> rand);
-        $bola = $this-> rand[$claveazar];
-        unset($this -> rand [$claveazar]);
-        echo "num bola: $bola</br>";
-        // var_dump($this-> rand);
-        return $bola;
-    }
-
+    /**
+     * método para ser incluido en método verifica()
+     * comprueba si hay linea o si hay bingo
+     */
     public function getPremio(array $linea){      
         if( $this->linealeida == 3 ){
             $this->linealeida = 0;
@@ -165,16 +188,9 @@ class Bingo implements BingoableInterface{
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
                 echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this-> bingoCantado = 1;
+                var_dump($this->totalcartones);
             }
         }
     }
-
-    // public function getJuego(){
-    //     echo "<div>";
-    //     while($this->bingoCantado !=1){
-    //         $this->getBola();
-    //     }
-    //     echo "</div>";
-    // }
 
 }

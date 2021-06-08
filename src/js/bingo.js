@@ -1,9 +1,11 @@
-// let body = document.querySelectorAll("body");
-// // const body = document.getElementById("9999");
 
+//  const body = document.getElementById("9999");
+const body = document.querySelectorAll("body");
+// const botoniluminador = document.getElementById("0000");
+// const divs = document.querySelectorAll("div");
 
-// const botonbola = document.getElementById("1");
-
+body.scrollTop;
+// window.scrollBy(0, window.innerHeight);
 
 // botonbola.addEventListener( 'click' , function ( ){
    
@@ -12,8 +14,7 @@
 //     document.writeln = '<?php $nuevaPartida -> getBola(); ?>';
 // } );
 
-
-function myFunction() {
-    var x = document.activeElement.tagName;
-    document.getElementById("demo").innerHTML = x;
-  }
+// function myFunction() {
+//     var x = document.activeElement.tagName;
+//     document.getElementById("demo").innerHTML = x;
+//   }
