@@ -36,7 +36,7 @@ class Bingo implements BingoableInterface{
             $this -> verifica($bola);
             flush();
             ob_flush();
-            sleep(2);
+            sleep(0.5);
         }
         echo "</div>";
     }
@@ -53,7 +53,7 @@ class Bingo implements BingoableInterface{
         while( $vueltas  != 0){
             $carton = [];
             if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2==0 || $ncartonesporjug==3&&$cont%3==0){
-                echo " <section class=sectioncartones> Propiedad de {$this->jugadores[$clavejugador]} "; 
+                echo " <section class=sectioncartones1> Propiedad de {$this->jugadores[$clavejugador]} "; 
                 $clavejugador++; 
             }
             for($i=0; $i<3; $i++){
@@ -72,7 +72,7 @@ class Bingo implements BingoableInterface{
             echo "</div>";
             $cont++;
             if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2 ==0 || $ncartonesporjug==3&&$cont%3 ==0 ){
-                echo "</section> <hr>";
+                echo "</section>";
             }
             $vueltas--;
         }
@@ -114,7 +114,7 @@ class Bingo implements BingoableInterface{
                     // var_dump($this->totalcartones[$key][$clave]);  echo"<br><br><br><br>";
                     if($caracter == $bola){
                         // echo "match en carton: $key , Linea: $clave , clave: $indi , idcelda: $celda<br> <hr>";
-                        echo " ¡Match!</br> ";
+                        echo " ¡Match! </br> ";
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
                         $this->totalcartones[$key][$clave][$indi] = "X";
                     }
@@ -144,7 +144,7 @@ class Bingo implements BingoableInterface{
             echo "</div>";
             $cont++;
             if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2 ==0 || $ncartonesporjug==3&&$cont%3 ==0 ){
-                echo "</section> <hr>";
+                echo "</section>";
             }
         }
     } 

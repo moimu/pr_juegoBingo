@@ -1,5 +1,5 @@
 .celdacolor{
-    background-color: orange;
+    background-color: green;
     /* color:orange; */
 }
 .carton{
@@ -8,6 +8,7 @@
     border: 1px solid black;
     height: 89px;
     width: 226px;
+    margin: 0px 50px 0px 50px;
     text-align: center;
 }
 .cartonfila{
@@ -24,26 +25,36 @@
 .sectioncartones{
     z-index: 0;
     height: auto;
-    width:auto;
+    width:100%;
     /* background-color: cornflowerblue; */
     display:flex;
     justify-content: space-evenly;
     margin: 10px;
     padding: 15px;
 } 
-/* .imagen{
+.sectioncartones1{
+    z-index: 0;
+    height: auto;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.527);
+    display:flex;
+    margin-right: 100px;
+    margin-left: 100px;
+    justify-content:space-around;
+    padding: 15px;
+}
+.imagen{
     position: absolute;
     z-index: -2;
 }
-*/
 
-/* body{
+
+body{
     color: white;
     background-color: rgb(109, 114, 138);
     background-image: url("./fondo.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
-    
+    background-size:cover;    
     display:flex;
     align-content: center;
     flex-wrap: wrap;
@@ -51,7 +62,7 @@
 
     scroll-behavior: smooth;
     
-}  */
+} 
 
 /* fieldset{
     background-color: rgba(0, 0, 0, 0.644);
@@ -68,12 +79,14 @@
     margin: 0px 200px 0px 20px;
 } */
 
-/* 
+ 
 .juego{
     display:flex;
-    flex-wrap: no-wrap;
-    align-self: center;
-    flex-direction: column;
+    flex-wrap:wrap;
+    justify-content:center;
+    flex-direction: row;
+    font-size: 18px;
+    color: yellow;
 
     box-sizing: border-box;
     padding-left: 10px;
@@ -84,10 +97,8 @@
     scroll-behavior: smooth;
 
     border: solid black;
-
+   
     position:relative;
-    margin-right: 200px;
-    width:1000px;
+    width:60%;
     height: 400px;
 } 
-*/
