@@ -15,7 +15,7 @@ class Bingo implements BingoableInterface{
 
     public function __construct(string $nombre1, string $nombre2, string $nombre3, string $nombre4){
         
-        $this->jugadores = [$nombre1,$nombre2,$nombre3,$nombre4];
+        $this->jugadores = [0=>$nombre1,1=>$nombre1,2=>$nombre1,3=>$nombre2,4=>$nombre2,5=>$nombre2,6=> $nombre3,7=>$nombre3,8=>$nombre3,9=>$nombre4,10=>$nombre4,11=>$nombre4];
         $this-> lineaCompleta = 0;
         $this-> lineaCantada = 0;
         $this-> bingoCantado = 0;
@@ -36,7 +36,7 @@ class Bingo implements BingoableInterface{
             $this -> verifica($bola);
             flush();
             ob_flush();
-            sleep(3);
+            sleep(1);
         }
         echo "</div>";
     }
@@ -52,6 +52,7 @@ class Bingo implements BingoableInterface{
         $ncartonesporjugador = $ncartonesporjugador*4;
         $contIdCarton = 0;
         $contador = 0;
+        if($ncartonesporjugador==1 || $ncartonesporjugador%3==0 || $ncartonesporjugador%2==0 || $ncartonesporjugador%1==0  )
         while( $ncartonesporjugador != 0){
             $carton = [];
             echo "<div class = cartones>";
@@ -195,7 +196,7 @@ class Bingo implements BingoableInterface{
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
                 echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this-> bingoCantado = 1;
-                // var_dump($this->totalcartones);
+                var_dump($this->totalcartones);
             }
         }
     }

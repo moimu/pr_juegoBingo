@@ -7,17 +7,21 @@
     <title> BINGO </title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body onclick="myFunction()">
+<body>
 <img class = "imagen" src="./bingo.png">
 <?php
     include('Bingo/Bingo.php');
 
     $nuevaPartida = new Bingo('Manu', 'Samuel', 'Albert', 'Moi');
 
-    $nuevaPartida -> getCartones(2);
+    $nuevaPartida -> getCartones(1);
 
     $nuevaPartida -> initJuego();
-   
+    // $bola = $nuevaPartida -> getBola();
+    // $nuevaPartida -> verifica($bola);
+
+    // $bola = $nuevaPartida -> getBola();
+    // $nuevaPartida -> verifica($bola);
  
     echo " <script src=js/bingo.js language=javascript type=text/javascript></script>";
 
