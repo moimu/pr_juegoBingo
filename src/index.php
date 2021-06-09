@@ -7,7 +7,7 @@
     <title> BINGO </title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body onclick="myFunction()">
+<body>
 
 <?php
     include('Bingo/Bingo.php');
@@ -16,8 +16,12 @@
 
     $nuevaPartida -> getCartones(1);
 
-    $nuevaPartida -> initJuego();
-   
+    // $nuevaPartida -> initJuego();
+    $bola = $nuevaPartida -> getBola();
+    $nuevaPartida -> verifica($bola);
+
+    $bola = $nuevaPartida -> getBola();
+    $nuevaPartida -> verifica($bola);
  
     echo " <script src=js/bingo.js language=javascript type=text/javascript></script>";
 

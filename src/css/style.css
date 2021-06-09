@@ -1,4 +1,29 @@
 .celdacolor{
     background-color: orange;
-    /* color:orange; */
+}
+.carton{
+    border: 1px solid black;
+    height: 89px;
+    width: 226px;
+    text-align: center;
+}
+.cartonfila{
+    display:flex;
+    flex-direction: row;
+    margin: 4px;
+}
+.cartonfilacelda{
+    border: 1px solid black;
+    margin: 1px;
+    width: 20px;
+    height: 20px;
+}
+.sectioncartones{
+    height: auto;
+    width:auto;
+    background-color: cornflowerblue;
+    display:flex;
+    justify-content: space-evenly;
+    margin: 10px;
+    padding: 15px;
 }

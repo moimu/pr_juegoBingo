@@ -47,41 +47,37 @@ class Bingo implements BingoableInterface{
      * - totalIds[] clave 1 = id primer carton, dentro de esta clave existe array que
      *   para cada valor contiene id de celdas correspondientes al cartón.
      */
-    public function getCartones($ncartonesporjugador){
+    public function getCartones($ncartonesporjug){
         
-        $ncartonesporjugador = $ncartonesporjugador*4;
-        $contIdCarton = 0;
-        $contador = 0;
-        while( $ncartonesporjugador != 0){
+        $vueltas = $ncartonesporjug*4;
+        
+        $clavejugador = $cont = 0;
+        while( $vueltas != 0){
             $carton = [];
-            echo "<fieldset> carton : $contIdCarton";
-            if($contIdCarton%3==0){
-                echo " ".$this->jugadores[$contador];
-                $contador++;
-                echo "<hr>";
+            
+            if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2==0 || $ncartonesporjug==3&&$cont%3==0){
+                echo " <section class=sectioncartones> Propiedad de {$this->jugadores[$clavejugador]} "; 
+                $clavejugador++; 
             }
             for($i=0; $i<3; $i++){
                 $linea = fgets($this-> fichero);
                 $carton []= explode( ".", $linea );                
             }
             $this-> totalcartones[] = $carton;
-            echo "<table class = c"."$contIdCarton id=$contIdCarton border=1px>";
-            $idceldas=[];
-            $contIdCelda = 1;
+            echo "<div class=carton>";
             foreach ($carton as $key => $value ) {                    
-                echo "<tr>";
+                echo "<div class=cartonfila>";
                 foreach  ($carton[$key] as $clave => $valor) {
-                    echo "<td id=$contIdCarton$contIdCelda>".$valor."</td>";
-                    $idceldas[] = "$contIdCarton$contIdCelda";
-                    $contIdCelda++;
+                    echo "<div class=cartonfilacelda>".$valor."</div>";
                 }
-                echo "</tr>";
+                echo "</div>";
             }
-            echo "</table>";
-            echo "</fieldset>";
-            $this-> totalIds[] = $idceldas;
-            $ncartonesporjugador--;
-            $contIdCarton++;
+            echo "</div>";
+            $cont++;
+            if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2 ==0 || $ncartonesporjug==3&&$cont%3 ==0 ){
+                echo "</section> <hr>";
+            }
+            $vueltas--;
         }
         // var_dump($this-> totalcartones);
         $this-> verificartotalcartones = [];
@@ -89,17 +85,13 @@ class Bingo implements BingoableInterface{
         // para poder editarlo y verificar premios
         $this-> verificartotalcartones = $this-> totalcartones;
         // var_dump( $this-> totalIds);
-        
         // clave 1 = id primer carton, dentro de esta clave existe array que
         // para cada valor contiene id de celdas correspondientes al cartón.
-        $this-> totalIds[] = $idceldas;
-        $ncartonesporjugador--;
-        $contIdCarton++;
          
     }
     /**
      * Saca bola siendo esta un numero al azar contenido en el array rand
-     * y borra este numero para so ser repetido
+     * y borra este numero para no ser repetido
      */
     public function getBola(){
         // $bola será el VALOR contenido en array NO el indice
@@ -155,7 +147,6 @@ class Bingo implements BingoableInterface{
                             echo "</table>";
                             echo "</fieldset>";
                         }
-                        
                         $disp = 1;
                     }
                 }
@@ -188,7 +179,6 @@ class Bingo implements BingoableInterface{
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
                 echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this-> bingoCantado = 1;
-                var_dump($this->totalcartones);
             }
         }
     }
