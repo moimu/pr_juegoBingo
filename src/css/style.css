@@ -2,3 +2,59 @@
     background-color: orange;
     /* color:orange; */
 }
+.imagen{
+    position: absolute;
+    z-index: -2;
+}
+body{
+    color: white;
+    background-color: rgb(109, 114, 138);
+    background-image: url("./fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    display:flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content:center;
+
+    scroll-behavior: smooth;
+    
+}
+
+fieldset{
+    background-color: rgba(0, 0, 0, 0.644);
+}
+
+.cartones{
+    display:flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content:center;
+
+    width: 200px;
+    height: auto;
+    margin: 0px 200px 0px 20px;
+}
+
+.juego{
+display:flex;
+flex-wrap: no-wrap;
+align-self: center;
+flex-direction: column;
+
+box-sizing: border-box;
+padding-left: 10px;
+
+background-color: rgba(54, 42, 165, 0.609);
+
+overflow:scroll;
+scroll-behavior: smooth;
+
+border: solid black;
+
+position:relative;
+margin-right: 200px;
+width:1000px;
+height: 400px;
+}

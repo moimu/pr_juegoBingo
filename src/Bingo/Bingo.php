@@ -15,7 +15,7 @@ class Bingo implements BingoableInterface{
 
     public function __construct(string $nombre1, string $nombre2, string $nombre3, string $nombre4){
         
-        $this->jugadores = [$nombre1, $nombre2, $nombre3, $nombre4];
+        $this->jugadores = [$nombre1,$nombre2,$nombre3,$nombre4];
         $this-> lineaCompleta = 0;
         $this-> lineaCantada = 0;
         $this-> bingoCantado = 0;
@@ -30,13 +30,13 @@ class Bingo implements BingoableInterface{
     public function initJuego(){
         // cancela el límite de tiempo de ejecución de php
         set_time_limit(0);
-        echo "<div>";
+        echo "<div class = 'juego' id = 'juego'>";
         while($this->bingoCantado !=1){
             $bola = $this -> getBola();
             $this -> verifica($bola);
             flush();
             ob_flush();
-            sleep(2);
+            sleep(3);
         }
         echo "</div>";
     }
@@ -54,12 +54,11 @@ class Bingo implements BingoableInterface{
         $contador = 0;
         while( $ncartonesporjugador != 0){
             $carton = [];
+            echo "<div class = cartones>";
             echo "<fieldset> carton : $contIdCarton";
-            if($contIdCarton%3==0){
-                echo " ".$this->jugadores[$contador];
+                echo " Propietario: ".$this->jugadores[$contador]." ";
                 $contador++;
                 echo "<hr>";
-            }
             for($i=0; $i<3; $i++){
                 $linea = fgets($this-> fichero);
                 $carton []= explode( ".", $linea );                
@@ -79,6 +78,7 @@ class Bingo implements BingoableInterface{
             }
             echo "</table>";
             echo "</fieldset>";
+            echo "</div>";
             $this-> totalIds[] = $idceldas;
             $ncartonesporjugador--;
             $contIdCarton++;
@@ -108,7 +108,9 @@ class Bingo implements BingoableInterface{
             $claveazar = array_rand($this-> rand);
             $bola = $this-> rand[$claveazar];
             unset($this -> rand [$claveazar]);
+            echo "</br>";
             echo "num bola: $bola</br>";
+            echo "</br>";
             // var_dump($this-> rand);
             return $bola;
         }
@@ -132,7 +134,8 @@ class Bingo implements BingoableInterface{
                     }
                     if($caracter == $bola){
                         // echo "match en carton: $key , Linea: $clave , clave: $indi , idcelda: $celda<br> <hr>";
-                        echo " ¡Match! ";
+                        echo " ¡Match!</br> ";
+                        echo "</br>";
                         $idcartonmatch = $key;
                         $idceldamatch = $celda;
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
@@ -141,6 +144,7 @@ class Bingo implements BingoableInterface{
                         foreach($this->totalcartones as $key => $value){
                             echo "<table border=1px>";
                             foreach ($this->totalcartones[$key] as $clave => $valor ) {                    
+                                
                                 echo "<tr>";
                                 foreach  ($this->totalcartones[$key][$clave] as $in => $numero) {
                                     if($numero == "X"){
@@ -151,9 +155,12 @@ class Bingo implements BingoableInterface{
                                     }
                                 }
                                 echo "</tr>";
+                               
                             }
+                            echo "Jugador : ".$this->jugadores[$key];
                             echo "</table>";
                             echo "</fieldset>";
+                            echo "</br>";
                         }
                         
                         $disp = 1;
@@ -188,7 +195,7 @@ class Bingo implements BingoableInterface{
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
                 echo "!!!!!!!!!!!BINGOOOO¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this-> bingoCantado = 1;
-                var_dump($this->totalcartones);
+                // var_dump($this->totalcartones);
             }
         }
     }

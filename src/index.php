@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body onclick="myFunction()">
-
+<img class = "imagen" src="./bingo.png">
 <?php
     include('Bingo/Bingo.php');
 
-    $nuevaPartida = new Bingo('manu', 'samuel', 'albert', 'moi');
+    $nuevaPartida = new Bingo('Manu', 'Samuel', 'Albert', 'Moi');
 
-    $nuevaPartida -> getCartones(1);
+    $nuevaPartida -> getCartones(2);
 
     $nuevaPartida -> initJuego();
    
