@@ -99,6 +99,7 @@ body{
     border: solid black;
    
     position:relative;
+    margin-top: 20px;
     width:60%;
     height: 400px;
 } 
