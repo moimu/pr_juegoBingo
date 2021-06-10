@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!-- <img class = "imagen" src="./bingo.png"> -->
+
+<button class ='Nuevo' onclick="location.href='./index.html'">Nueva partida</button>
 <?php
-    include_once('../vendor/autoload.php');
+
     use Moi\Bingo\Bingo;
-    
+    include('Bingo/Bingo.php');
+
     $nombre1=$_POST['nombre1'];
     $nombre2=$_POST['nombre2'];
     $nombre3=$_POST['nombre3'];
@@ -27,7 +29,6 @@
     
     echo " <script src=js/bingo.js language=javascript type=text/javascript></script>";
 ?>
-
 
 </body>
 </html>
