@@ -5,7 +5,7 @@ declare(strict_types=1);
 // implements BingoableInterface
 
 namespace Moi\Bingo;
-// use DomainException;
+use DomainException;
 
 class Bingo {
     
@@ -30,7 +30,7 @@ class Bingo {
     }
     /**
      * Inicia el juego sacando bolas, verificando que existen en cartones,
-     * y dando linea y bingo. finaliza al salir bingo
+     * y dando linea y bingo. finaliza al salir bingo.
      */
     public function initJuego(){
         // cancela el límite de tiempo de ejecución de php
@@ -51,8 +51,13 @@ class Bingo {
      * - Cada carton generado irá dentro de totalcartones[]
      * - copiamos totalcartones en verificartotalcartones es copia exacta de totalcartones
      *   eso se realiza para para poder editarlo y verificar premios.
+     * 
+     * @throws DomainException <arroja excepción de dominio si n cartones no esta comprendido [1-3]>
      */
     public function getCartones($ncartonesporjug){
+        if($ncartonesporjug == 0 || $ncartonesporjug == 4){
+            throw new DomainException();
+        }
         $vueltas  = $ncartonesporjug*4;
         $clavejugador = $cont = 0;
         while( $vueltas  != 0){
@@ -87,6 +92,8 @@ class Bingo {
     /**
      * Saca bola siendo esta un numero al azar contenido en el array rand
      * y borra este numero para so ser repetido
+     * 
+     * @return $bola <contiene int entre 1 y 99 nunca repetido en misma partida >
      */
     public function getBola(){
         // $bola será el VALOR contenido en array NO el indice
@@ -105,6 +112,7 @@ class Bingo {
      * Para $key = n su valor será un array con 3 indices 0 1 2, 
      * cada uno de estos contendrá un array con todos los numeros de una linea,
      * el carton lo conformarán estas 3 líneas.
+     * 
      */
     public function verifica($bola){
 
@@ -133,7 +141,7 @@ class Bingo {
             }
             echo " <span class='bola1'>$bola</span></br></br> ";
         }
-        // -----------------  IMPRIMO CARTONES MATCHEADOS  -------------------
+        // Impresión de cartones Matcheados, aplica clase .celdacolor a celdas con valor matcheado en bola.
         foreach($this->totalcartones as $key => $value){
             if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2==0 || $ncartonesporjug==3&&$cont%3==0){
                 echo " <section class='sectioncartones'> Propiedad de {$this->jugadores[$clavejugador]} "; 
@@ -163,6 +171,8 @@ class Bingo {
     /**
      * método para ser incluido en método verifica()
      * comprueba si hay linea o si hay bingo
+     * 
+     * @return $mensaje <contiene string Linea o Bingo >
      */
     public function getPremio(array $linea){   
 

@@ -3,10 +3,9 @@
 declare(strict_types=1);
 
 namespace Moi\Tests\Bingo;
-
 use Moi\Bingo\Bingo;
 use PHPUnit\Framework\TestCase;
-// use DomainException;
+use DomainException;
 
 class BingoTests extends TestCase{
 
@@ -22,29 +21,35 @@ class BingoTests extends TestCase{
         // then
         $this->assertIsInt($resultado);
     }
+
     /**
      * @return void
      * @covers ::getBola()
      */
     public function testDevuelveVerdaderoSiBolaEsMayorOIgualA1(){
+
         //given
         $nuevojuego = new Bingo('pepe','juan','pedro','moi');
         // when
         $resultado = $nuevojuego -> getBola();
         // then
         $this->assertGreaterThanOrEqual(1,$resultado);
+
     }
+
      /**
      * @return void
      * @covers ::getBola()
      */
     public function testDevuelveVerdaderoSiBolaEsMenorOIgualA90(){
+
         //given
         $nuevojuego = new Bingo('pepe','juan','pedro','moi');
         // when
         $resultado = $nuevojuego -> getBola();
         // then
         $this->assertLessThanOrEqual(90,$resultado);
+
     }
 
     /**
@@ -53,6 +58,7 @@ class BingoTests extends TestCase{
      */
    
     public function testDevuelveVerdaderoSiRecibeArrayDe4PosicionesDevuelveStringLINEA(){
+
         //given
         $nuevojuego = new Bingo('pepe','juan','pedro','moi');
         $linea =['*','*','*','*'];
@@ -61,13 +67,16 @@ class BingoTests extends TestCase{
         $esperado = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
         // then
         $this->assertEquals( $resultado, $esperado);
+
     }
+
     /**
      * @return void
      * @covers ::getPremio()
      */
    
     public function testDevuelveVerdaderoSiRecibe3ArraysDe4PosicionesDevuelveStringBINGO(){
+
         //given
         $nuevojuego = new Bingo('pepe','juan','pedro','moi');
         $linea1 = $linea2 = $linea3 =['*','*','*','*'];
@@ -80,7 +89,37 @@ class BingoTests extends TestCase{
         $esperado = "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
         // then
         $this->assertEquals( $resultado, $esperado);
+
     }
 
+    /**
+     * @return void
+     * @covers ::getCartones()
+     */
+    public function testDevuelveDomainExceptionSiCartonesSon0PorJugador(){
+
+        $this -> expectException(DomainException::class);
+        //given
+        $nuevojuego = new Bingo('pepe','juan','pedro','moi');
+        
+        // when then
+        $nuevojuego -> getCartones(0);
+    
+    }
+
+    /**
+     * @return void
+     * @covers ::getCartones()
+     */
+    public function testDevuelveDomainExceptionSiCartonesSon4PorJugador(){
+
+        $this -> expectException(DomainException::class);
+        //given
+        $nuevojuego = new Bingo('pepe','juan','pedro','moi');
+        
+        // when then
+        $nuevojuego -> getCartones(4);
+    
+    }
 
 }
