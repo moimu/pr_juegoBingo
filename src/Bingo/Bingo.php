@@ -1,8 +1,13 @@
 <?php
 
-include('interfazBingo.php');
+declare(strict_types=1);
+// include('interfazBingo.php');
+// implements BingoableInterface
 
-class Bingo implements BingoableInterface{
+namespace Moi\Bingo;
+// use DomainException;
+
+class Bingo {
     
     private array $jugadores;
     private array $totalcartones;
@@ -21,7 +26,7 @@ class Bingo implements BingoableInterface{
         $this-> bingoCantado = 0;
         $this-> linealeida = 0;
         $this-> rand = range (1, 90);
-        $this -> fichero = fopen('cartones.dat','rb');
+        $this -> fichero = fopen(__DIR__.'\..\cartones.dat','rb');
     }
     /**
      * Inicia el juego sacando bolas, verificando que existen en cartones,
@@ -34,9 +39,9 @@ class Bingo implements BingoableInterface{
         while($this->bingoCantado !=1){
             $bola = $this -> getBola();
             $this -> verifica($bola);
-            flush();
-            ob_flush();
-            sleep(0.5);
+            // flush();
+            // ob_flush();
+            // sleep(2);
         }
         echo "</div>";
     }
@@ -90,9 +95,9 @@ class Bingo implements BingoableInterface{
             $claveazar = array_rand($this-> rand);
             $bola = $this-> rand[$claveazar];
             unset($this -> rand [$claveazar]);
-            echo "</br>";
-            echo " JUGADA  num bola: $bola</br> ";
-            echo "</br>";
+            // echo "</br>";
+            // echo " JUGADA  num bola: $bola</br> ";
+            // echo "</br>";
             // var_dump($this-> rand);
             return $bola;
         }
@@ -119,7 +124,8 @@ class Bingo implements BingoableInterface{
                         $this->totalcartones[$key][$clave][$indi] = "X";
                     }
                 }
-            $this->getPremio($this->verificartotalcartones[$key][$clave]);
+            echo $this->getPremio($this->verificartotalcartones[$key][$clave]);
+            echo "<br>";
             }
         }
         // -----------------  IMPRIMO CARTONES MATCHEADOS  -------------------
@@ -153,7 +159,8 @@ class Bingo implements BingoableInterface{
      * método para ser incluido en método verifica()
      * comprueba si hay linea o si hay bingo
      */
-    public function getPremio(array $linea){      
+    public function getPremio(array $linea){   
+
         if( $this->linealeida == 3 ){
             $this->linealeida = 0;
             $this->lineaCompleta = 0;
@@ -161,17 +168,20 @@ class Bingo implements BingoableInterface{
         $this->linealeida++;
         $size= count($linea);
         if ($size == 4 ) {
+             var_dump($linea);
             if($this->lineaCantada == 0){
-                echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this->lineaCantada = 1;
+                $mensaje = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
+                return $mensaje;
             }
             $this->lineaCompleta =  $this->lineaCompleta +1;
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
-                echo "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡</br> </br>";
                 echo "Cartones Finales: </br>";
                 $this-> bingoCantado = 1;
+                return $mensaje = "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
             }
         }
+
     }
 
 }

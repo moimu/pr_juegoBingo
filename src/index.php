@@ -8,15 +8,19 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<img class = "imagen" src="./bingo.png">
+<!-- <img class = "imagen" src="./bingo.png"> -->
 <?php
-    include('Bingo/Bingo.php');
+    include_once('../vendor/autoload.php');
+    // include_once('./clases/Carta.php');
+    use Moi\Bingo\Bingo;
+
+    // include('Bingo/Bingo.php');
 
     $nuevaPartida = new Bingo('Manu', 'Samuel', 'Albert', 'Moi');
 
     $nuevaPartida -> getCartones(1);
     
-     $nuevaPartida -> initJuego();
+    $nuevaPartida -> initJuego();
      
     // $bola = $nuevaPartida -> getBola();
     // $nuevaPartida -> verifica($bola);

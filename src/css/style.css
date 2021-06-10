@@ -52,7 +52,7 @@
 body{
     color: white;
     background-color: rgb(109, 114, 138);
-    background-image: url("./fondo.jpg");
+    /* background-image: url("./fondo.jpg"); */
     background-repeat: no-repeat;
     background-size:cover;    
     display:flex;
