@@ -26,7 +26,7 @@ class Bingo {
         $this-> bingoCantado = 0;
         $this-> linealeida = 0;
         $this-> rand = range (1, 90);
-        $this -> fichero = fopen(__DIR__.'.\cartones.dat','rb');
+        $this -> fichero = fopen(__DIR__.'./cartones.dat','rb');
     }
     /**
      * Inicia el juego sacando bolas, verificando que existen en cartones,
