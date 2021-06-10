@@ -16,9 +16,10 @@
 
     // include('Bingo/Bingo.php');
 
+    
     $nuevaPartida = new Bingo('Manu', 'Samuel', 'Albert', 'Moi');
-
-    $nuevaPartida -> getCartones(1);
+    
+    $nuevaPartida -> getCartones(3);
     
     $nuevaPartida -> initJuego();
      
@@ -29,11 +30,11 @@
     // $nuevaPartida -> verifica($bola);
 
     // $bola = $nuevaPartida -> getBola();
-    // $nuevaPartida -> verifica($bola);
- 
+    // $nuevaPartida -> verifica($bola);  
+    
     echo " <script src=js/bingo.js language=javascript type=text/javascript></script>";
-
 ?>
+
 
 </body>
 </html>

@@ -97,9 +97,41 @@ body{
     scroll-behavior: smooth;
 
     border: solid black;
-   
+    scroll-behavior: smooth;
     position:relative;
     margin-top: 20px;
-    width:auto;
+    max-width:1200px;
+    min-width:400px;
     height: 400px;
 } 
+.bola{
+    z-index:5;
+    display:flex;
+    background-color:white;
+    border: solid black 2;
+    border-radius: 40px;
+    position: absolute;
+    color: black;
+    font-size: 18;
+  
+    width:40px;
+    height: 40px;
+    justify-content:center;
+    align-items: center;
+}
+.bola1{
+    z-index:5;
+    background-color:rgba(255, 255, 255, 0.835);
+    border: solid black 2;
+    border-radius: 40px;
+    position: fixed;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    color: black;
+    font-size: 18;
+    width:70px;
+    height: 70px;
+    margin-top:-35px;
+}
+

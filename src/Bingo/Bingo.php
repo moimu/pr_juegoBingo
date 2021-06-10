@@ -39,9 +39,9 @@ class Bingo {
         while($this->bingoCantado !=1){
             $bola = $this -> getBola();
             $this -> verifica($bola);
-            // flush();
-            // ob_flush();
-            // sleep(2);
+            flush();
+            ob_flush();
+            sleep(1);
         }
         echo "</div>";
     }
@@ -95,6 +95,7 @@ class Bingo {
             $claveazar = array_rand($this-> rand);
             $bola = $this-> rand[$claveazar];
             unset($this -> rand [$claveazar]);
+            $this->bolaactual = $bola;
             return $bola;
         }
         
@@ -106,6 +107,7 @@ class Bingo {
      * el carton lo conformarán estas 3 líneas.
      */
     public function verifica($bola){
+
         $ncartonesporjug = count($this->totalcartones)/4;
         $clavejugador = $cont = 0;
         foreach ($this->verificartotalcartones as $key => $value) {
@@ -115,18 +117,26 @@ class Bingo {
                     // var_dump($this->totalcartones[$key][$clave]);  echo"<br><br><br><br>";
                     if($caracter == $bola){
                         // echo "match en carton: $key , Linea: $clave , clave: $indi , idcelda: $celda<br> <hr>";
-                        echo " ¡Match! </br> ";
+                        $ndecarton = $key;
+                        $ndecarton +=1;
+                        $ndelinea = $clave;
+                        $ndelinea +=1;
+                        
+                        echo "Carton : ".$ndecarton." Linea: ".$ndelinea;
+                        echo " Numero: $caracter - ¡Match! </br>";
+                        
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
                         $this->totalcartones[$key][$clave][$indi] = "X";
                     }
                 }
             echo $this->getPremio($this->verificartotalcartones[$key][$clave]);
             }
+            echo " <span class='bola1'>$bola</span></br></br> ";
         }
         // -----------------  IMPRIMO CARTONES MATCHEADOS  -------------------
         foreach($this->totalcartones as $key => $value){
             if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2==0 || $ncartonesporjug==3&&$cont%3==0){
-                echo " <section class=sectioncartones> Propiedad de {$this->jugadores[$clavejugador]} "; 
+                echo " <section class='sectioncartones'> Propiedad de {$this->jugadores[$clavejugador]} "; 
                 $clavejugador++; 
             }
             echo "<div class=carton>";
@@ -177,5 +187,4 @@ class Bingo {
         }
 
     }
-
 }
