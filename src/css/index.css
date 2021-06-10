@@ -1,17 +1,19 @@
 body{
     background-image: url(../imagenes/trucos-usan-casinos-gastes-dinero.jpg);
     background-repeat: no-repeat;  
+    background-size:cover;
 }
 h2{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .menu{
-    position: absolute;
     display:flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;    
+    
     padding-top: 50px;
     margin-left: 200px;
+
 }
 img{
     width: 200px;
@@ -21,6 +23,7 @@ img{
 .barra{
     display: flex;
     flex-direction: row;
+    justify-content:center;
     background-image: url(../imagenes/2018031409504449921.jpg);
     border-radius: 5px;
     border-style: solid;
@@ -40,6 +43,9 @@ img{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .comojugar{
+    height:auto;
+    min-width: 10em;
+    max-width: 100%;
     background-color: red;
     border-radius: 30px;
     border-radius: 9px;
@@ -47,6 +53,9 @@ img{
     border-color: black;
 }
 .jugar{
+    height:auto;
+    min-width: 10em;
+    max-width: 100%;
     background-color: black;
     border-radius: 30px;
     border-radius: 7px;
@@ -88,7 +97,7 @@ footer{
     position:absolute;
     background-color: white;
     border-radius: 30px;
-    margin : 100px 500px 500px 500px;
+    margin : 50px 200px 500px 100px;
     visibility:hidden;
     -webkit-text-stroke: 1px rgb(0, 0, 0);
     border-radius: 30px;
