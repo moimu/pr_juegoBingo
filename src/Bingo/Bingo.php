@@ -1,8 +1,13 @@
 <?php
 
-include('interfazBingo.php');
+declare(strict_types=1);
+// include('interfazBingo.php');
+// implements BingoableInterface
 
-class Bingo implements BingoableInterface{
+namespace Moi\Bingo;
+// use DomainException;
+
+class Bingo {
     
     private array $jugadores;
     private array $totalcartones;
@@ -12,7 +17,6 @@ class Bingo implements BingoableInterface{
     private int $lineaCompleta;
     private int $linealeida;
     private int $bingoCantado;
-    private int $bolaactual;
 
     public function __construct(string $nombre1, string $nombre2, string $nombre3, string $nombre4){
         
@@ -22,8 +26,7 @@ class Bingo implements BingoableInterface{
         $this-> bingoCantado = 0;
         $this-> linealeida = 0;
         $this-> rand = range (1, 90);
-        $this -> fichero = fopen('cartones.dat','rb');
-        $this->bolaactual = 0;
+        $this -> fichero = fopen(__DIR__.'\..\cartones.dat','rb');
     }
     /**
      * Inicia el juego sacando bolas, verificando que existen en cartones,
@@ -38,8 +41,9 @@ class Bingo implements BingoableInterface{
             $this -> verifica($bola);
             flush();
             ob_flush();
-            sleep(1);;    
-        }      
+            sleep(1);
+        }
+        echo "</div>";
     }
     /**
      * Generará tantos cartones para cada jugador como pasemos por parámetro max 3
@@ -91,9 +95,6 @@ class Bingo implements BingoableInterface{
             $claveazar = array_rand($this-> rand);
             $bola = $this-> rand[$claveazar];
             unset($this -> rand [$claveazar]);
-            echo "</br>";
-            echo " <span class='bola'>$bola</span></br> ";
-            echo "</br>";
             // var_dump($this-> rand);
             $this->bolaactual = $bola;
             return $bola;
@@ -107,6 +108,7 @@ class Bingo implements BingoableInterface{
      * el carton lo conformarán estas 3 líneas.
      */
     public function verifica($bola){
+
         $ncartonesporjug = count($this->totalcartones)/4;
         $clavejugador = $cont = 0;
         foreach ($this->verificartotalcartones as $key => $value) {
@@ -128,9 +130,9 @@ class Bingo implements BingoableInterface{
                         $this->totalcartones[$key][$clave][$indi] = "X";
                     }
                 }
-            $this->getPremio($this->verificartotalcartones[$key][$clave]);
+            echo $this->getPremio($this->verificartotalcartones[$key][$clave]);
             }
-           
+            echo " <span class='bola1'>$bola</span></br></br> ";
         }
         // -----------------  IMPRIMO CARTONES MATCHEADOS  -------------------
         foreach($this->totalcartones as $key => $value){
@@ -163,7 +165,8 @@ class Bingo implements BingoableInterface{
      * método para ser incluido en método verifica()
      * comprueba si hay linea o si hay bingo
      */
-    public function getPremio(array $linea){      
+    public function getPremio(array $linea){   
+
         if( $this->linealeida == 3 ){
             $this->linealeida = 0;
             $this->lineaCompleta = 0;
@@ -171,21 +174,19 @@ class Bingo implements BingoableInterface{
         $this->linealeida++;
         $size= count($linea);
         if ($size == 4 ) {
+            //  var_dump($linea);
             if($this->lineaCantada == 0){
-                echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ </br>";
                 $this->lineaCantada = 1;
+                $mensaje = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
+                return $mensaje;
             }
             $this->lineaCompleta =  $this->lineaCompleta +1;
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
-                echo "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡</br> </br>";
-                echo $this->getBola();
                 echo "Cartones Finales: </br>";
                 $this-> bingoCantado = 1;
+                return $mensaje = "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
             }
         }
-    }
-    public function getBolaActual(){
-        $this->getBola();
-        echo " <span class='bola'>$this->bolaactual</span></br> ";
+
     }
 }

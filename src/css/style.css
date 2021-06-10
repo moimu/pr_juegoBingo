@@ -52,7 +52,7 @@
 body{
     color: white;
     background-color: rgb(109, 114, 138);
-    background-image: url("./fondo.jpg");
+    /* background-image: url("./fondo.jpg"); */
     background-repeat: no-repeat;
     background-size:cover;    
     display:flex;
@@ -106,7 +106,6 @@ body{
 } 
 .bola{
     z-index:5;
-    margin-bottom: 200px;
     display:flex;
     background-color:white;
     border: solid black 2;
@@ -120,3 +119,19 @@ body{
     justify-content:center;
     align-items: center;
 }
+.bola1{
+    z-index:5;
+    background-color:rgba(255, 255, 255, 0.835);
+    border: solid black 2;
+    border-radius: 40px;
+    position: fixed;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    color: black;
+    font-size: 18;
+    width:70px;
+    height: 70px;
+    margin-top:-35px;
+}
+
