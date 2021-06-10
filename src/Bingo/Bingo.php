@@ -12,6 +12,7 @@ class Bingo implements BingoableInterface{
     private int $lineaCompleta;
     private int $linealeida;
     private int $bingoCantado;
+    private int $bolaactual;
 
     public function __construct(string $nombre1, string $nombre2, string $nombre3, string $nombre4){
         
@@ -22,6 +23,7 @@ class Bingo implements BingoableInterface{
         $this-> linealeida = 0;
         $this-> rand = range (1, 90);
         $this -> fichero = fopen('cartones.dat','rb');
+        $this->bolaactual = 0;
     }
     /**
      * Inicia el juego sacando bolas, verificando que existen en cartones,
@@ -36,9 +38,8 @@ class Bingo implements BingoableInterface{
             $this -> verifica($bola);
             flush();
             ob_flush();
-            sleep(0.5);
-        }
-        echo "</div>";
+            sleep(1);;    
+        }      
     }
     /**
      * Generará tantos cartones para cada jugador como pasemos por parámetro max 3
@@ -91,9 +92,10 @@ class Bingo implements BingoableInterface{
             $bola = $this-> rand[$claveazar];
             unset($this -> rand [$claveazar]);
             echo "</br>";
-            echo " JUGADA  num bola: $bola</br> ";
+            echo " <span class='bola'>$bola</span></br> ";
             echo "</br>";
             // var_dump($this-> rand);
+            $this->bolaactual = $bola;
             return $bola;
         }
         
@@ -114,18 +116,26 @@ class Bingo implements BingoableInterface{
                     // var_dump($this->totalcartones[$key][$clave]);  echo"<br><br><br><br>";
                     if($caracter == $bola){
                         // echo "match en carton: $key , Linea: $clave , clave: $indi , idcelda: $celda<br> <hr>";
-                        echo " ¡Match! </br> ";
+                        $ndecarton = $key;
+                        $ndecarton +=1;
+                        $ndelinea = $clave;
+                        $ndelinea +=1;
+                        
+                        echo "Carton : ".$ndecarton." Linea: ".$ndelinea;
+                        echo " Numero: $caracter - ¡Match! </br>";
+                        
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
                         $this->totalcartones[$key][$clave][$indi] = "X";
                     }
                 }
             $this->getPremio($this->verificartotalcartones[$key][$clave]);
             }
+           
         }
         // -----------------  IMPRIMO CARTONES MATCHEADOS  -------------------
         foreach($this->totalcartones as $key => $value){
             if( $ncartonesporjug==1 || $ncartonesporjug==2&&$cont%2==0 || $ncartonesporjug==3&&$cont%3==0){
-                echo " <section class=sectioncartones> Propiedad de {$this->jugadores[$clavejugador]} "; 
+                echo " <section class='sectioncartones'> Propiedad de {$this->jugadores[$clavejugador]} "; 
                 $clavejugador++; 
             }
             echo "<div class=carton>";
@@ -168,10 +178,14 @@ class Bingo implements BingoableInterface{
             $this->lineaCompleta =  $this->lineaCompleta +1;
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
                 echo "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡</br> </br>";
+                echo $this->getBola();
                 echo "Cartones Finales: </br>";
                 $this-> bingoCantado = 1;
             }
         }
     }
-
+    public function getBolaActual(){
+        $this->getBola();
+        echo " <span class='bola'>$this->bolaactual</span></br> ";
+    }
 }

@@ -97,9 +97,26 @@ body{
     scroll-behavior: smooth;
 
     border: solid black;
-   
+    scroll-behavior: smooth;
     position:relative;
     margin-top: 20px;
-    width:auto;
+    max-width:1200px;
+    min-width:400px;
     height: 400px;
 } 
+.bola{
+    z-index:5;
+    margin-bottom: 200px;
+    display:flex;
+    background-color:white;
+    border: solid black 2;
+    border-radius: 40px;
+    position: absolute;
+    color: black;
+    font-size: 18;
+  
+    width:40px;
+    height: 40px;
+    justify-content:center;
+    align-items: center;
+}
