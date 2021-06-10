@@ -18,3 +18,6 @@ body.scrollTop;
 //     var x = document.activeElement.tagName;
 //     document.getElementById("demo").innerHTML = x;
 //   }
+
+var Historialjuego = document.getElementById("juego");
+Historialjuego.scrollTop = Historialjuego.scrollHeight;

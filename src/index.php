@@ -14,7 +14,7 @@
 
     $nuevaPartida = new Bingo('Manu', 'Samuel', 'Albert', 'Moi');
 
-    $nuevaPartida -> getCartones(3);
+    $nuevaPartida -> getCartones(1);
     
      $nuevaPartida -> initJuego();
      
