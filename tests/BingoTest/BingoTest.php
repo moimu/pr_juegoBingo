@@ -47,23 +47,40 @@ class BingoTests extends TestCase{
         $this->assertLessThanOrEqual(90,$resultado);
     }
 
-    //  /**
-    //  * @return void
-    //  * @covers ::getPremio()
-    //  */
-    // public function testDevuelveVerdaderoSiRecibeArrayde4PosicionesYCantaLinea(){
-    //     //given
-    //     $nuevojuego = new Bingo('pepe','juan','pedro','moi');
-    //     $array =['*','*','*','*'];
-    //     // when
-    //     $resultado = $nuevojuego -> getPremio($array);
-    //     // echo "$resultado";
-    //     $esperado = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
-    //     // echo "$esperado";
-    //     // then
-    //     $this->assertEquals(string $esperado, string $resultado);
-    // }
+    /**
+     * @return void
+     * @covers ::getPremio()
+     */
+   
+    public function testDevuelveVerdaderoSiRecibeArrayDe4PosicionesDevuelveStringLINEA(){
+        //given
+        $nuevojuego = new Bingo('pepe','juan','pedro','moi');
+        $linea =['*','*','*','*'];
+        // when
+        $resultado = $nuevojuego -> getPremio($linea);
+        $esperado = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
+        // then
+        $this->assertEquals( $resultado, $esperado);
+    }
+    /**
+     * @return void
+     * @covers ::getPremio()
+     */
+   
+    public function testDevuelveVerdaderoSiRecibe3ArraysDe4PosicionesDevuelveStringBINGO(){
+        //given
+        $nuevojuego = new Bingo('pepe','juan','pedro','moi');
+        $linea1 = $linea2 = $linea3 =['*','*','*','*'];
+        
+        // when
+        $nuevojuego -> getPremio($linea1);
+        $nuevojuego -> getPremio($linea2);
+        $resultado = $nuevojuego -> getPremio($linea3);
 
+        $esperado = "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
+        // then
+        $this->assertEquals( $resultado, $esperado);
+    }
 
 
 }

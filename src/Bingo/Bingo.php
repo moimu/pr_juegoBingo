@@ -95,10 +95,6 @@ class Bingo {
             $claveazar = array_rand($this-> rand);
             $bola = $this-> rand[$claveazar];
             unset($this -> rand [$claveazar]);
-            // echo "</br>";
-            // echo " JUGADA  num bola: $bola</br> ";
-            // echo "</br>";
-            // var_dump($this-> rand);
             return $bola;
         }
         
@@ -125,7 +121,6 @@ class Bingo {
                     }
                 }
             echo $this->getPremio($this->verificartotalcartones[$key][$clave]);
-            echo "<br>";
             }
         }
         // -----------------  IMPRIMO CARTONES MATCHEADOS  -------------------
@@ -168,17 +163,16 @@ class Bingo {
         $this->linealeida++;
         $size= count($linea);
         if ($size == 4 ) {
-             var_dump($linea);
+            $this->lineaCompleta =  $this->lineaCompleta +1;
             if($this->lineaCantada == 0){
                 $this->lineaCantada = 1;
                 $mensaje = "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  LÍNEA  ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
                 return $mensaje;
             }
-            $this->lineaCompleta =  $this->lineaCompleta +1;
             if($this->linealeida == 3 && $this->lineaCompleta == 3 &&  $this-> bingoCantado == 0){
-                echo "Cartones Finales: </br>";
                 $this-> bingoCantado = 1;
-                return $mensaje = "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
+                $mensaje = "!!!!!!!!!!!!!!!!!!!!!!!   BINGOOOO   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡";
+                return $mensaje;
             }
         }
 
