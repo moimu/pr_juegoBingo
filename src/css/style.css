@@ -1,6 +1,6 @@
 .celdacolor{
     background-color: green;
-    /* color:orange; */
+    
 }
 .carton{
     z-index: 1;
@@ -50,9 +50,9 @@
 
 
 body{
-    color: white;
-    background-color: rgb(109, 114, 138);
-    /* background-image: url("./fondo.jpg"); */
+    
+    background-image: url("./bingo_indautxu-345.jpg");
+    
     background-repeat: no-repeat;
     background-size:cover;    
     display:flex;

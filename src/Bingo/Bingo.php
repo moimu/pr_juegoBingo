@@ -123,8 +123,8 @@ class Bingo {
                         $ndelinea = $clave;
                         $ndelinea +=1;
                         
-                        echo "Carton : ".$ndecarton." Linea: ".$ndelinea;
-                        echo " Numero: $caracter - ¡Match! </br>";
+                        echo "Carton : ".$ndecarton." fila: ".$ndelinea;
+                        echo " Numero: $caracter  -  ¡Match!</br>";
                         
                         unset($this->verificartotalcartones[$key][$clave][$indi]);
                         $this->totalcartones[$key][$clave][$indi] = "X";

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <div class="barra"> 
+            <img class="imagenbingo" src="dices-160005_960_720.png"> 
+            <h1 class="titulo">BINGO</h1>            
+        </div>
+        <main class="menu">
+            <div class="comojugar">
+                <img src="ICONOS-WEB_Bingo.png">
+                <h2 class="textomenu">Como jugar</h2>
+            </div>
+            <div class="jugar" id="jugar">
+                <img src="s483812653206681448_p18_i1_w2160.png">
+                <h2 class="textomenu1">Jugar ya</h2>
+            </div>
+        </main>
+        <div class="formulario" id="formulario">
+            <img class="cerrar" id="cerrar" src="458594.png">
+            <form action="../src/index.php" method="POST">
+                <p>Nombre del jugador 1: <input type="text" name="nombre1" required></p>
+                <p>Nombre del jugador 2: <input type="text" name="nombre2" required></p>
+                <p>Nombre del jugador 3: <input type="text" name="nombre3" required></p>
+                <p>Nombre del jugador 4: <input type="text" name="nombre4" required></p>
+                <p>Numero de cartones de los jugadores: <input type="number" name="ncartones" required></p>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+        <script src="formulario.js" language="javascript" type="text/javascript"></script>
+        <footer>
+            <p class="textofo">Se aconseja siempre el juego responsable y la búsqueda de diversión, en ningun momento fomentamos la ludopatia</p>
+           
+        </footer>
+</body>
+</html>

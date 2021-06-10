@@ -1,0 +1,113 @@
+body{
+    background-image: url(trucos-usan-casinos-gastes-dinero.jpg);
+    background-repeat: no-repeat;  
+}
+h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.menu{
+    position: absolute;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 50px;
+    margin-left: 200px;
+}
+img{
+    width: 200px;
+    height: 200px;
+    border-radius: 3px;
+}
+.barra{
+    display: flex;
+    flex-direction: row;
+    background-image: url(2018031409504449921.jpg);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: red;
+}
+.imagenbingo{
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 120px;
+    height: 100px;
+}
+.titulo{
+    color: white;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    padding-left: 30px;
+    padding-top: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.comojugar{
+    background-color: red;
+    border-radius: 30px;
+    border-radius: 9px;
+    border-style: solid;
+    border-color: black;
+}
+.jugar{
+    background-color: black;
+    border-radius: 30px;
+    border-radius: 7px;
+    border-style: solid;
+    border-color: red;
+    margin-left: 650px;
+}
+.textomenu{
+    color:white;
+    padding-left: 30px;
+    border-radius: 3px;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+.textomenu1{
+    color:white;
+    padding-left: 60px;
+    -webkit-text-stroke: 1px red;
+}
+footer{
+    position:absolute;  
+    left:0px;   
+    right:0px;  
+    bottom:0px;
+    
+    background-image: url(2018031409504449921.jpg);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: red;
+}
+.textofo{
+    color:white;  
+    padding-left: 10px;
+    font-size: x-large;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+.formulario{
+    position:absolute;
+    background-color: white;
+    border-radius: 30px;
+    margin : 100px 500px 500px 500px;
+    visibility:hidden;
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    border-radius: 30px;
+    border-style: solid;
+    border-color: black;
+}
+form{
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    
+}
+.cerrar{
+    width:30px;
+    height:30px;
+    padding-left: 90%;
+    padding-top: 10px;
+}
+input{
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    border-radius: 3px;
+}
