@@ -1,5 +1,5 @@
 body{
-    background-image: url(trucos-usan-casinos-gastes-dinero.jpg);
+    background-image: url(../imagenes/trucos-usan-casinos-gastes-dinero.jpg);
     background-repeat: no-repeat;  
 }
 h2{
@@ -21,7 +21,7 @@ img{
 .barra{
     display: flex;
     flex-direction: row;
-    background-image: url(2018031409504449921.jpg);
+    background-image: url(../imagenes/2018031409504449921.jpg);
     border-radius: 5px;
     border-style: solid;
     border-color: red;
@@ -71,7 +71,7 @@ footer{
     right:0px;  
     bottom:0px;
     
-    background-image: url(2018031409504449921.jpg);
+    background-image: url(../imagenes/2018031409504449921.jpg);
     border-radius: 5px;
     border-style: solid;
     border-color: red;
@@ -110,4 +110,9 @@ form{
 input{
     -webkit-text-stroke: 1px rgb(0, 0, 0);
     border-radius: 3px;
+}
+
+a{
+    color:white;
+    text-decoration: none;
 }

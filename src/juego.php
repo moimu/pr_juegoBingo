@@ -9,6 +9,7 @@
 </head>
 <body>
 <!-- <img class = "imagen" src="./bingo.png"> -->
+<button class ='Nuevo' onclick="location.href='./index.html'">Nueva partida</button>
 <?php
     // include_once('../vendor/autoload.php');
     // include_once('./clases/Carta.php');
